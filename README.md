@@ -13,12 +13,14 @@ let package = Package(
         .package(path: "../OnboardingFeature"),
     ],
     targets: [
-        .target(name: "ModularRickAndMortyApp",
-        dependencies: [
+        .target(
+            name: "ModularRickAndMortyApp",
+            dependencies: [
                 .product(name: "CoreDI", package: "CoreDI"),
                 .product(name: "CharactersFeature", package: "CharactersFeature"),
                 .product(name: "OnboardingFeature", package: "OnboardingFeature")
-                ])
+                ]
+        )
     ]
 )
 ```
