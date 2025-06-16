@@ -51,13 +51,28 @@ public final class CharactersListViewModel: ObservableObject {
     }
 
     private func loadPage() async {
+        guard state != .loading else { return }
+
         state = .loading
         do {
             let page = try await service.fetchPage(nextPage)
-            let newItems = showOnlyFavorites ? page.results.filter { favorites.isFavorite(id: $0.id) } : page.results
-            characters.append(contentsOf: newItems)
             nextPage += 1
-            state = page.info.next == nil ? .loadedAll : .idle
+            
+            let newItems = showOnlyFavorites
+                ? page.results.filter { favorites.isFavorite(id: $0.id) }
+                : page.results
+            
+            characters.append(contentsOf: newItems)
+            
+            let reachedEnd = page.info.next == nil
+            state = reachedEnd ? .loadedAll : .idle
+            
+
+            if showOnlyFavorites,
+               !reachedEnd,
+               characters.count < 15 { // примерно 1 экран
+                await loadPage()
+            }
         } catch {
             state = .failed(error)
         }

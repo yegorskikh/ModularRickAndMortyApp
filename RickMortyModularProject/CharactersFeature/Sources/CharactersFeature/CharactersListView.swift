@@ -2,11 +2,14 @@ import SwiftUI
 
 public struct CharactersListView: View {
     let showOnlyFavorites: Bool
-    @StateObject private var vm: CharactersListViewModel
+    @StateObject
+    private var vm: CharactersListViewModel
 
     public init(showOnlyFavorites: Bool) {
         self.showOnlyFavorites = showOnlyFavorites
-        _vm = StateObject(wrappedValue: CharactersListViewModel(showOnlyFavorites: showOnlyFavorites))
+        _vm = StateObject(
+            wrappedValue: CharactersListViewModel(showOnlyFavorites: showOnlyFavorites)
+        )
     }
 
     public var body: some View {
@@ -32,7 +35,9 @@ public struct CharactersListView: View {
                     EmptyView()
                 }
             }
-            .refreshable { vm.refresh() }
+            .refreshable {
+                vm.refresh()
+            }
         }
         .onAppear {
             if vm.characters.isEmpty {
