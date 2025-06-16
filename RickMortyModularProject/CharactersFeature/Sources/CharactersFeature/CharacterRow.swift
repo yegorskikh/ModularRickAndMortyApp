@@ -5,11 +5,13 @@ public struct CharacterRow: View {
     let character: Character
     let isFav: Bool
     let toggle: () -> Void
+    
     public init(character: Character, isFav: Bool, toggle: @escaping () -> Void) {
         self.character = character
         self.isFav = isFav
         self.toggle = toggle
     }
+    
     public var body: some View {
         HStack(spacing: 12) {
             AsyncImage(url: character.image) { phase in

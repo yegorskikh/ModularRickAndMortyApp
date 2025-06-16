@@ -4,9 +4,13 @@ import CharactersFeature
 import OnboardingFeature
 
 public struct ModularRickAndMortyAppEntry: View {
-    @StateObject private var container = DIContainer.shared
-    @AppStorage("hasSeenOnboarding") private var hasSeen = false
+    @StateObject
+    private var container = DIContainer.shared
+    @AppStorage("hasSeenOnboarding")
+    private var hasSeen = false
+    
     public init() {}
+    
     public var body: some View {
         if hasSeen {
             TabView {

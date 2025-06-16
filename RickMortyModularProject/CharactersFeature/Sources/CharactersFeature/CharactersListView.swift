@@ -20,15 +20,24 @@ public struct CharactersListView: View {
             .navigationTitle(showOnlyFavorites ? "Favorites" : "Characters")
             .overlay {
                 switch vm.state {
-                case .loading: ProgressView()
+                case .loading:
+                    ProgressView()
                 case .failed(let error):
-                    ContentUnavailableView("Error", systemImage: "exclamationmark.triangle",
-                                           description: Text(error.localizedDescription))
-                default: EmptyView()
+                    ContentUnavailableView(
+                        "Error",
+                        systemImage: "exclamationmark.triangle",
+                        description: Text(error.localizedDescription)
+                    )
+                default:
+                    EmptyView()
                 }
             }
             .refreshable { vm.refresh() }
         }
-        .onAppear { if vm.characters.isEmpty { vm.refresh() } }
+        .onAppear {
+            if vm.characters.isEmpty {
+                vm.refresh()
+            }
+        }
     }
 }

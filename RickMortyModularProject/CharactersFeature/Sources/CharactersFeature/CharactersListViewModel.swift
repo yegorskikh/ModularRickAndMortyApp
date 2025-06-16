@@ -29,7 +29,12 @@ public final class CharactersListViewModel: ObservableObject {
     }
 
     public func loadMoreIfNeeded(currentItem item: Character?) {
-        guard state != .loading && state != .loadedAll else { return }
+        guard
+            state != .loading && state != .loadedAll
+        else {
+            return
+        }
+        
         if item == nil || characters.last == item {
             loadingTask?.cancel()
             loadingTask = Task { await loadPage() }
@@ -41,7 +46,9 @@ public final class CharactersListViewModel: ObservableObject {
         objectWillChange.send()
     }
 
-    public func isFavorite(_ id: Int) -> Bool { favorites.isFavorite(id: id) }
+    public func isFavorite(_ id: Int) -> Bool {
+        favorites.isFavorite(id: id)
+    }
 
     private func loadPage() async {
         state = .loading

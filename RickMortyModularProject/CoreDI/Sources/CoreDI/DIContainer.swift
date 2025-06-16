@@ -17,8 +17,13 @@ public final class CharactersRemoteService: CharactersService {
 
 public final class DIContainer: ObservableObject {
     public static let shared = DIContainer()
-    private init() { register() }
+    
+    private init() {
+        register()
+    }
+    
     private var storage: [String: Any] = [:]
+    
     private func register() {
         storage[String(describing: FavoritesStore.self)] = FavoritesStore()
         storage[String(describing: CharactersService.self)] = CharactersRemoteService() as CharactersService
@@ -35,5 +40,7 @@ public final class DIContainer: ObservableObject {
 @propertyWrapper
 public struct Inject<T> {
     public var wrappedValue: T
-    public init() { wrappedValue = DIContainer.shared.resolve() }
+    public init() {
+        wrappedValue = DIContainer.shared.resolve()
+    }
 }
