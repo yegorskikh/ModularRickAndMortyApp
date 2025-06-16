@@ -3,19 +3,25 @@ import SwiftUI
 public struct OnboardingFlow: View {
     let onFinish: () -> Void
     @State private var page = 0
-    public init(onFinish: @escaping () -> Void) { self.onFinish = onFinish }
+    
+    public init(
+        onFinish: @escaping () -> Void
+    ) {
+        self.onFinish = onFinish
+    }
+    
     public var body: some View {
         VStack {
             TabView(selection: $page) {
-                OnboardingScreen(title: "Добро пожаловать",
-                                 text: "Это демо‑приложение показывает персонажей вселенной Rick & Morty.")
+                OnboardingScreen(title: "Welcome",
+                                 text: "This demo application shows the characters of the Rick & Morty universe.")
                     .tag(0)
-                OnboardingScreen(title: "Избранное",
-                                 text: "Добавляйте любимых героев в избранное и смотрите их отдельно.")
+                OnboardingScreen(title: "Favorites",
+                                 text: "Add your favorite characters to favorites and see them separately.")
                     .tag(1)
             }
             .tabViewStyle(.page(indexDisplayMode: .automatic))
-            Button(page == 1 ? "Начать" : "Далее") {
+            Button(page == 1 ? "Start" : "Next") {
                 if page == 1 { onFinish() } else { withAnimation { page = 1 } }
             }
             .buttonStyle(.borderedProminent).padding()
