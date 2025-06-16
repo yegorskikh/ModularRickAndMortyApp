@@ -1,6 +1,6 @@
 # Modular
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-06-16 at 11 16 17](https://github.com/user-attachments/assets/f16508cb-ddca-45c4-8258-d7436ba71aea)
 
-![Simulato](https://github.com/user-attachments/assets/62927f66-5362-447c-b27e-17033e337a1c)
 
 An example of the use of modules in xcode
 
