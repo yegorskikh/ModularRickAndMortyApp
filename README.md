@@ -29,4 +29,9 @@ let package = Package(
 
 > Example screen
 
-![Simulator Screenshot - iPhone SE (3rd generation) - 2025-06-16 at 11 16 17](https://github.com/user-attachments/assets/f16508cb-ddca-45c4-8258-d7436ba71aea)
+![Simulator Screenshot - iPhone SE (3rd generation) - 2025-06-16 at 11 30 43](https://github.com/user-attachments/assets/7acdf187-fc0f-4215-b569-7446bed18ad7) ![Simulator Screenshot - iPhone SE (3rd generation) - 2025-06-16 at 11 16 17](https://github.com/user-attachments/assets/457b5f34-3e6f-441a-87b8-8cd8fc37a96b)
+
+
+
+
+
